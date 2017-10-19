@@ -670,11 +670,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\FIC\\aula_backend\\sistema_vendas\\sistema_vendas.csproj",
+      "projectUniqueName": "C:\\Users\\FIC\\Desktop\\sistema_vendas\\sistema_vendas.csproj",
       "projectName": "sistema_vendas",
-      "projectPath": "C:\\Users\\FIC\\aula_backend\\sistema_vendas\\sistema_vendas.csproj",
+      "projectPath": "C:\\Users\\FIC\\Desktop\\sistema_vendas\\sistema_vendas.csproj",
       "packagesPath": "C:\\Users\\FIC\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\FIC\\aula_backend\\sistema_vendas\\obj\\",
+      "outputPath": "C:\\Users\\FIC\\Desktop\\sistema_vendas\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

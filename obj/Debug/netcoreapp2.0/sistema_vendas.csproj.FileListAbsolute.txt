@@ -1,0 +1,10 @@
+c:\Users\FIC\Desktop\sistema_vendas\bin\Debug\netcoreapp2.0\sistema_vendas.deps.json
+c:\Users\FIC\Desktop\sistema_vendas\bin\Debug\netcoreapp2.0\sistema_vendas.runtimeconfig.json
+c:\Users\FIC\Desktop\sistema_vendas\bin\Debug\netcoreapp2.0\sistema_vendas.runtimeconfig.dev.json
+c:\Users\FIC\Desktop\sistema_vendas\bin\Debug\netcoreapp2.0\sistema_vendas.dll
+c:\Users\FIC\Desktop\sistema_vendas\bin\Debug\netcoreapp2.0\sistema_vendas.pdb
+c:\Users\FIC\Desktop\sistema_vendas\obj\Debug\netcoreapp2.0\sistema_vendas.csproj.CoreCompileInputs.cache
+c:\Users\FIC\Desktop\sistema_vendas\obj\Debug\netcoreapp2.0\sistema_vendas.AssemblyInfoInputs.cache
+c:\Users\FIC\Desktop\sistema_vendas\obj\Debug\netcoreapp2.0\sistema_vendas.AssemblyInfo.cs
+c:\Users\FIC\Desktop\sistema_vendas\obj\Debug\netcoreapp2.0\sistema_vendas.dll
+c:\Users\FIC\Desktop\sistema_vendas\obj\Debug\netcoreapp2.0\sistema_vendas.pdb
