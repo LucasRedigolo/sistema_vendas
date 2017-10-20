@@ -1,5 +1,5 @@
 ﻿ using System;
-/*
+
 namespace sistema_vendas
 {
     class Program
@@ -55,13 +55,34 @@ namespace sistema_vendas
                 System.Console.WriteLine("Digite a Opção correta");
                 System.Console.WriteLine("1 - Pessoa Física");
                 System.Console.WriteLine("2 - Pessoa Jurídica");
-                 = Console.ReadLine();
-
-                switch ()
-                {   
+                 string opcao = Console.ReadLine();
+                 string cpf;   
+                 
+                    switch (opcao)
+                 {   
                     case "1":
+                    {
+                    
+                    bool cpfvalido = false;
+
+                    do 
+                    
+                    {
+                    
                     System.Console.WriteLine("Digite seu CPF:");
-                    Console.ReadLine();
+                    cpf = Console.ReadLine();
+
+                    cpfvalido = checagemcpf(cpf);
+
+                    if (cpfvalido ==false)
+                    {
+                        System.Console.WriteLine("CPF Inválido!!");
+                    }
+
+                    }while (cpfvalido!=false);
+                    
+                    System.Console.WriteLine("GRAVAR NO ARQUIVO TEXTO");           
+                    }
                     break;
 
                     case "2":
@@ -91,18 +112,12 @@ namespace sistema_vendas
 
             }
 
-        static bool ValidaCPF (string cpf){
-
-                
-            }
-            static void checagemcpf(string[] args)
+        
+            static bool checagemcpf(string cpf)
         {
-            Console.WriteLine("Digite seu CPF");
-            string cpf = Console.ReadLine();
-
             if(cpf.Length != 11)
             {
-                Console.WriteLine("CPF Inválido");
+                return false;
             }
             else
             {
@@ -154,14 +169,13 @@ namespace sistema_vendas
 
                 if(digito==cpfult2.ToString())
                 {
-                    Console.WriteLine("CPF Válido");
+                    return true;
                 }
                  else
                 {
-                     Console.WriteLine("CPF Inválido");
+                     return false;
                 }
             }
 
         }    
 }
-*/
