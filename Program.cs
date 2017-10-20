@@ -78,15 +78,15 @@ namespace sistema_vendas
                         System.Console.WriteLine("Digite seu CPF:");
                         cpf = Console.ReadLine();
 
-                        cpfvalido = checagemcpf(cpf);
+                        cpfvalido = checagemcpf(cpf); 
 
                         if (cpfvalido == true)
                         {
-                            StreamWriter Cadastro_Cliente = new StreamWriter("cadastro_cliente.csv", true);
+                            StreamWriter Cadastro_Cliente = new StreamWriter("cadastro_cliente.csv", true); // se o cpf for valido cria dados no arquivo.csv
                            
                             FileInfo info_cliente = new FileInfo("cadastro_cliente.csv");
 
-                            if (info_cliente.Length == 0)
+                            if (info_cliente.Length == 0) // se o arquivo estiver vazio acrescenta o cabeçalho
                                 {
                                     Cadastro_Cliente.WriteLine("NOME" + " E-MAIL " + " CPF/CNPJ " + " DATA DO CADASTRO "); 
                                 }
@@ -138,8 +138,28 @@ namespace sistema_vendas
                 }
             }
             // Cadastrar novo Produto
-            static void CadastrarProduto(){
+            static void CadastrarProduto()
+            {
+                string Codigo;
+                string nomeProduto; 
+                string Descricao;
+                double Preco;
+               
+                System.Console.WriteLine("Digite o Código do Produto: ");
+                Codigo = Console.ReadLine();
 
+                System.Console.WriteLine("Digite o Nome do Produto: ");
+                nomeProduto = Console.ReadLine();
+
+                System.Console.WriteLine("Digite a descrição do Produto: ");
+                Descricao = Console.ReadLine();
+                
+                System.Console.WriteLine("Digite o Preço do Produto: ");
+                
+                if (!double.TryParse(Console.ReadLine(), out Preco))
+                {
+                    Console.WriteLine("Insira um valor válido!");
+                }
             }
 
             // Realizar Venda
