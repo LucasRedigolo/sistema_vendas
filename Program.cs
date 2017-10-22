@@ -1,5 +1,6 @@
 ﻿ using System;
  using System.IO;
+ using System.Linq;
 
 namespace sistema_vendas
 {
@@ -46,8 +47,6 @@ namespace sistema_vendas
     
             // Cadastrar novo cliente
             static void CadastrarCliente()
-
-            
             {
                 string cpf;   
                 string cnpj;
@@ -137,6 +136,8 @@ namespace sistema_vendas
                     break;
                 }
             }
+
+
             // Cadastrar novo Produto
             static void CadastrarProduto()
             {
@@ -144,7 +145,7 @@ namespace sistema_vendas
                 string nomeProduto; 
                 string Descricao;
                 double Preco;
-                bool ConverteuPreco;
+                bool ConverteuPreco=false;
 
 
                
@@ -161,11 +162,11 @@ namespace sistema_vendas
                     {
                         System.Console.WriteLine("Digite o Preço do Produto: ");
                         ConverteuPreco = double.TryParse(Console.ReadLine(), out Preco);
-                        System.Console.WriteLine("Insira um valor válido!");
+                        
 
                     } while (!(ConverteuPreco == true));
 
-                {
+                
                     StreamWriter Cadastro_Produto = new StreamWriter("cadastro_produto.csv", true);
                            
                     FileInfo info_produto = new FileInfo("cadastro_produto.csv");
@@ -178,12 +179,34 @@ namespace sistema_vendas
                     Cadastro_Produto.WriteLine(Codigo + " " + nomeProduto + " " + Descricao + " " + Preco);
 
                     Cadastro_Produto.Close();
-                }
+                
             }
-            
+
 
             // Realizar Venda
-            static void RealizarVenda(){
+            static void RealizarVenda()
+            {
+                string clienteCadastrado;
+                
+
+                System.Console.WriteLine("Insira o CPF/CNPJ do comprador: ");
+                clienteCadastrado = Console.ReadLine();
+
+                if(File.ReadAllText(@"cadastro_cliente.csv").Contains(clienteCadastrado))
+
+                {
+                    foreach (var existe in File.ReadLines(@"cadastro_cliente.csv")
+                    .Select((text) => new { text })
+                    .Where(x => x.text.Contains(clienteCadastrado)))
+                        {
+                            Console.WriteLine(existe.text);
+                        }   
+
+                }
+
+
+
+
 
             }
 
