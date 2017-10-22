@@ -195,12 +195,14 @@ namespace sistema_vendas
                 if(File.ReadAllText(@"cadastro_cliente.csv").Contains(clienteCadastrado))
 
                 {
-                    foreach (var existe in File.ReadLines(@"cadastro_cliente.csv")
-                    .Select((text) => new { text })
+                    foreach (var existe in File.ReadLines(@"cadastro_cliente.csv")// lembrar de estudar função abaixo e a library adcionada -- essa é para ler o arquivo e mostrar a linha que contenha o que eu quiser
+                    .Select((text) => new { text }) 
                     .Where(x => x.text.Contains(clienteCadastrado)))
                         {
                             Console.WriteLine(existe.text);
                         }   
+                    //adcionar para ler todos os produtos cadastrados.
+                    
 
                 }
 
