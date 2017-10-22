@@ -144,6 +144,9 @@ namespace sistema_vendas
                 string nomeProduto; 
                 string Descricao;
                 double Preco;
+                bool ConverteuPreco;
+
+
                
                 System.Console.WriteLine("Digite o Código do Produto: ");
                 Codigo = Console.ReadLine();
@@ -154,13 +157,30 @@ namespace sistema_vendas
                 System.Console.WriteLine("Digite a descrição do Produto: ");
                 Descricao = Console.ReadLine();
                 
-                System.Console.WriteLine("Digite o Preço do Produto: ");
-                
-                if (!double.TryParse(Console.ReadLine(), out Preco))
+                do
+                    {
+                        System.Console.WriteLine("Digite o Preço do Produto: ");
+                        ConverteuPreco = double.TryParse(Console.ReadLine(), out Preco);
+                        System.Console.WriteLine("Insira um valor válido!");
+
+                    } while (!(ConverteuPreco == true));
+
                 {
-                    Console.WriteLine("Insira um valor válido!");
+                    StreamWriter Cadastro_Produto = new StreamWriter("cadastro_produto.csv", true);
+                           
+                    FileInfo info_produto = new FileInfo("cadastro_produto.csv");
+
+                    if (info_produto.Length == 0)
+                        {
+                            Cadastro_Produto.WriteLine("CÓDIGO DO PRODUTO " + " NOME DO PRODUTO " + " DESCRIÇÃO " + " PREÇO "); 
+                        }
+
+                    Cadastro_Produto.WriteLine(Codigo + " " + nomeProduto + " " + Descricao + " " + Preco);
+
+                    Cadastro_Produto.Close();
                 }
             }
+            
 
             // Realizar Venda
             static void RealizarVenda(){
