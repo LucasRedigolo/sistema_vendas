@@ -85,11 +85,6 @@ namespace sistema_vendas
                            
                             FileInfo info_cliente = new FileInfo("cadastro_cliente.csv");
 
-                            if (info_cliente.Length == 0) // se o arquivo estiver vazio acrescenta o cabeçalho
-                                {
-                                    Cadastro_Cliente.WriteLine("NOME" + " E-MAIL " + " CPF/CNPJ " + " DATA DO CADASTRO "); 
-                                }
-
                              Cadastro_Cliente.WriteLine(nome + " " + email + " " + cpf + " " + DateTime.Now);
 
                             Cadastro_Cliente.Close();
@@ -180,38 +175,34 @@ namespace sistema_vendas
 
             // Realizar Venda
             static void RealizarVenda()
-            {
+            {   
                 Console.WriteLine("Digite seu CPF");
-                string cliente = Console.ReadLine();     
-                string[] linhas = File.ReadAllLines("cadastro_cliente.csv");
+                string cpfvenda = Console.ReadLine();     
+                string[] linhas = File.ReadAllLines("Cadastro.txt");
                 bool cpfencontrado = false;
                 string linhacliente = "";
-                
                 foreach(string linha in linhas)
-                {
-                    if(linha.Contains(cliente) == true)
+            {
+                if(linha.Contains(cpfvenda) == true)
                     {
-                        cpfencontrado = true;
-                        linhacliente = linha;
-                        break;
+                    cpfencontrado = true;
+                    linhacliente = linha;
+                    break;
                     }
+                else
+                    {
+                        cpfencontrado = false;
+                    }            
 
-                    else
-                        {
-                            cpfencontrado = false;
-                        }            
-                }
-
+        }
                 if(cpfencontrado == true)
                 {
                     Console.WriteLine("CPF Válido");
-                    string[] produtos = File.ReadAllLines("cadastro_produto.csv");
-                    
+                    string[] produtos = File.ReadAllLines("Cadastroproduto.txt");
                     foreach(string produtovenda in produtos)
-                        {
-                        Console.WriteLine(produtovenda);
-                        }
-
+                    {
+                    Console.WriteLine(produtovenda);
+                    }
                     Console.WriteLine("Digite o código do produto");
                     string codigoproduto = Console.ReadLine();
                     
@@ -233,8 +224,23 @@ namespace sistema_vendas
     } 
 
             // Extrato do Cliente
-            static void ExtratoCliente(){
+            static void ExtratoCliente()
+            
+            {   
+                string cliente;
+                string[] compras = File.ReadAllLines("cadastro_vendas.csv");
 
+                System.Console.WriteLine("Qual o CPF/CNPJ do cliente?");
+                cliente = Console.ReadLine();
+
+                foreach (var extrato in File.ReadLines(@"cadastro_vendas.csv")
+                    .Select((compra, index) => new {compra})
+                    .Where(x => x.compra.Contains(cliente)))
+                    {
+                        Console.WriteLine(extrato.compra);
+                    }
+                             
+                
             }
 
             static bool checagemcpf(string cpf)
