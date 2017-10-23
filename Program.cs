@@ -14,7 +14,7 @@ namespace sistema_vendas
             {
                 System.Console.WriteLine("Digite a opção desejada:");
                 System.Console.WriteLine("1 - Cadastrar Cliente");
-                System.Console.WriteLine("2 - Cadastrar Prouduto");
+                System.Console.WriteLine("2 - Cadastrar Produto");
                 System.Console.WriteLine("3 - Realizar Venda");
                 System.Console.WriteLine("4 - Extrato Cliente");
                 System.Console.WriteLine("9 - Sair");
@@ -131,7 +131,7 @@ namespace sistema_vendas
 
                         }while (cnpjvalido==false);
                         
-                                   
+                                     
                     }
                     break;
                 }
@@ -171,11 +171,6 @@ namespace sistema_vendas
                            
                     FileInfo info_produto = new FileInfo("cadastro_produto.csv");
 
-                    if (info_produto.Length == 0)
-                        {
-                            Cadastro_Produto.WriteLine("CÓDIGO DO PRODUTO " + " NOME DO PRODUTO " + " DESCRIÇÃO " + " PREÇO "); 
-                        }
-
                     Cadastro_Produto.WriteLine(Codigo + " " + nomeProduto + " " + Descricao + " " + Preco);
 
                     Cadastro_Produto.Close();
@@ -186,31 +181,56 @@ namespace sistema_vendas
             // Realizar Venda
             static void RealizarVenda()
             {
-                string clienteCadastrado;
+                Console.WriteLine("Digite seu CPF");
+                string cliente = Console.ReadLine();     
+                string[] linhas = File.ReadAllLines("cadastro_cliente.csv");
+                bool cpfencontrado = false;
+                string linhacliente = "";
                 
-
-                System.Console.WriteLine("Insira o CPF/CNPJ do comprador: ");
-                clienteCadastrado = Console.ReadLine();
-
-                if(File.ReadAllText(@"cadastro_cliente.csv").Contains(clienteCadastrado))
-
+                foreach(string linha in linhas)
                 {
-                    foreach (var existe in File.ReadLines(@"cadastro_cliente.csv")// lembrar de estudar função abaixo e a library adcionada -- essa é para ler o arquivo e mostrar a linha que contenha o que eu quiser
-                    .Select((text) => new { text }) 
-                    .Where(x => x.text.Contains(clienteCadastrado)))
-                        {
-                            Console.WriteLine(existe.text);
-                        }   
-                    //adcionar para ler todos os produtos cadastrados.
-                    
+                    if(linha.Contains(cliente) == true)
+                    {
+                        cpfencontrado = true;
+                        linhacliente = linha;
+                        break;
+                    }
 
+                    else
+                        {
+                            cpfencontrado = false;
+                        }            
                 }
 
+                if(cpfencontrado == true)
+                {
+                    Console.WriteLine("CPF Válido");
+                    string[] produtos = File.ReadAllLines("cadastro_produto.csv");
+                    
+                    foreach(string produtovenda in produtos)
+                        {
+                        Console.WriteLine(produtovenda);
+                        }
 
-
-
-
-            }
+                    Console.WriteLine("Digite o código do produto");
+                    string codigoproduto = Console.ReadLine();
+                    
+                    foreach(string linhaproduto in produtos)
+                    {
+                        if(linhaproduto.Contains(codigoproduto) == true)
+                            {
+                            StreamWriter cadastrovendas = new StreamWriter ("Cadastrovendas.txt", true);
+                            cadastrovendas.WriteLine("Cliente: " + linhacliente + " Produto: " + linhaproduto + " Data: " + DateTime.Now);
+                            cadastrovendas.Close();
+                            }
+                        
+                    }
+                }
+                else{
+                    Console.WriteLine("CPF Inválido");
+                    CadastrarCliente();
+                }
+    } 
 
             // Extrato do Cliente
             static void ExtratoCliente(){
