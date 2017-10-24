@@ -664,23 +664,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\lucas_8ymmky\\.nuget\\packages\\": {},
+    "C:\\Users\\43692939876\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\lucas_8ymmky\\Desktop\\Projetos\\sistema_vendas\\sistema_vendas.csproj",
+      "projectUniqueName": "c:\\Users\\43692939876\\Desktop\\Projetos\\sistema_vendas\\sistema_vendas.csproj",
       "projectName": "sistema_vendas",
-      "projectPath": "C:\\Users\\lucas_8ymmky\\Desktop\\Projetos\\sistema_vendas\\sistema_vendas.csproj",
-      "packagesPath": "C:\\Users\\lucas_8ymmky\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\lucas_8ymmky\\Desktop\\Projetos\\sistema_vendas\\obj\\",
+      "projectPath": "c:\\Users\\43692939876\\Desktop\\Projetos\\sistema_vendas\\sistema_vendas.csproj",
+      "packagesPath": "C:\\Users\\43692939876\\.nuget\\packages\\",
+      "outputPath": "c:\\Users\\43692939876\\Desktop\\Projetos\\sistema_vendas\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\lucas_8ymmky\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\43692939876\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.0"

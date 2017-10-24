@@ -175,49 +175,27 @@ namespace sistema_vendas
 
             // Realizar Venda
             static void RealizarVenda()
-            {   
-                Console.WriteLine("Digite seu CPF");
-                string cpfvenda = Console.ReadLine();     
-                string[] linhas = File.ReadAllLines("Cadastro.txt");
-                bool cpfencontrado = false;
-                string linhacliente = "";
-                foreach(string linha in linhas)
-            {
-                if(linha.Contains(cpfvenda) == true)
-                    {
-                    cpfencontrado = true;
-                    linhacliente = linha;
-                    break;
-                    }
-                else
-                    {
-                        cpfencontrado = false;
-                    }            
+            {      
+                string cliente;
+                string[] venda = File.ReadAllLines(@"cadastro_cliente.csv");
 
-        }
-                if(cpfencontrado == true)
+                System.Console.WriteLine("Qual o CPF/CNPJ do cliente?");
+                cliente = Console.ReadLine();
+                System.Console.WriteLine("Bem vindo de volta!\n");
+
+                if (venda.Contains(cliente)== false)
+                
                 {
-                    Console.WriteLine("CPF Válido");
-                    string[] produtos = File.ReadAllLines("Cadastroproduto.txt");
-                    foreach(string produtovenda in produtos)
+                    foreach (var comprador in File.ReadLines(@"cadastro_cliente.csv")
+                    .Select((compra) => new {compra})
+                    .Where(x => x.compra.Contains(cliente)))
                     {
-                    Console.WriteLine(produtovenda);
+                        Console.WriteLine(comprador.compra);
                     }
-                    Console.WriteLine("Digite o código do produto");
-                    string codigoproduto = Console.ReadLine();
-                    
-                    foreach(string linhaproduto in produtos)
-                    {
-                        if(linhaproduto.Contains(codigoproduto) == true)
-                            {
-                            StreamWriter cadastrovendas = new StreamWriter ("Cadastrovendas.txt", true);
-                            cadastrovendas.WriteLine("Cliente: " + linhacliente + " Produto: " + linhaproduto + " Data: " + DateTime.Now);
-                            cadastrovendas.Close();
-                            }
-                        
-                    }
-                }
-                else{
+                }                
+             
+                else
+                {
                     Console.WriteLine("CPF Inválido");
                     CadastrarCliente();
                 }
